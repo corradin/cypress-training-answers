@@ -1,0 +1,21 @@
+name: CI
+
+on: push
+
+
+jobs:
+  run_tests:
+    name: Run my Playwright tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Get the code
+        uses: actions/checkout
+      - name: Install Node.js
+        uses: actions/setup-node
+        with:
+          node-version: '18'
+      - name: Install dependencies
+        run: cd client && npm ci && cd ../server && npm ci && cd ..
+      - name: Run Playwright
+        run: cd client && npm run playwright

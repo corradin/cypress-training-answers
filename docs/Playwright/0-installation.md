@@ -4,10 +4,6 @@
 
 These pages serve as documentation for the Playwright Training. You can work through the exercises at your own pace. Read carefully and if you have any questions feel free to ask.
 
-The system under test that we will be using is a tabular music tracker. It consists of a server part, which interfaces with the database. The most visible part is the client, which runs in a browser. It is built with VueJS, which is a front end framework. We will focus on testing the client with Playwright.
-
-![server-client](./images/server_client.png)
-
 ## Running the project
 
 In order to run the project locally, it is required that you have `node` and `git` installed. For `node` version 8.2.1 or higher is required.
@@ -26,28 +22,6 @@ Afterwards follow the instructions in the next section 'Checking out the project
 ``` bash
 git clone https://github.com/xebia/cypress-training.git
 ```
-
-## Starting the client & server
-
-1. Next we will start both the client and the server.
-
-From the root of the project run the following commands:
-
-``` bash
-     cd server
-     npm i
-     npm start
-```
-
-In another terminal, run the following:
-
-``` bash
-    cd client
-    npm i
-    npm start
- ```
-
-Now go to <http://localhost:8080> to check if everything is running correctly.
 
 ## Installing Playwright
 

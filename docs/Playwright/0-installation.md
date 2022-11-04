@@ -35,7 +35,7 @@ From the root of the project run the following commands:
 
 ``` bash
      cd server
-     npm install
+     npm i
      npm start
 ```
 
@@ -43,7 +43,7 @@ In another terminal, run the following:
 
 ``` bash
     cd client
-    npm install
+    npm i
     npm start
  ```
 
@@ -64,12 +64,11 @@ Playwright will do the following:
 
 ### About NPM
 
-NPM stands for Node Package Manager. See [npmjs.com](https://docs.npmjs.com/getting-started/what-is-npm#what-is-npm) for more info.
+NPM is a package manager for Node.js. See [npmjs.com](https://docs.npmjs.com/getting-started/what-is-npm#what-is-npm) for more info.
 In both the folders 'server' and 'client' you find a file called package.json.
 This package.json holds all the information (names, versions) about the npm packages that are used in the project.
-When you start `npm install`, it gathers all the names and versions and tries to install these packages
-from the public NPM repository.
+When you start `npm i`, it gathers all the names and versions and tries to install these packages from the public NPM registry.
 
-Package.json also stores some executable commands as shortcuts.
+Package.json also defines scripts as shortcuts.
 In this case you may find in the package.json a line which states: "start": "node build/dev-server.js",
-so you can type 'npm start' instead of 'node build/dev-server.js'.
+so you can type `npm run start` instead of `node build/dev-server.js`.

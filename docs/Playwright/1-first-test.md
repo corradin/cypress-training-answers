@@ -1,0 +1,18 @@
+# Exploring your first test
+
+## Exercise: Run in headed mode
+
+Playwright generates a sample test in the `tests` folder.
+If you would run playwright with `npx playwright test`, you will not see that much happen.
+Playwright also generates a `playwright.config.ts` file.
+Open this file and disable headless mode. To learn how to do so, check [this link](https://playwright.dev/docs/test-configuration).
+
+## Exercise: Slowing down
+Even if you are running in headed mode, it still is hard to follow what is going on. You could add a slowdown timer that adds an amount of milliseconds between all actions.
+
+Again, you can do this in the configuration file. Check out [HERE](https://playwright.dev/docs/test-configuration#more-browser-and-context-options) how.
+
+## Exercise: Catching up
+Take some time and try to understand what the test is doing. You can also change the test, run it and see how your chances affect the outcome.
+
+How do these tests differ from the tests that you are usually building? 

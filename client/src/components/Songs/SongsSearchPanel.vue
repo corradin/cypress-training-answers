@@ -1,7 +1,7 @@
 <template>
   <panel title="Search">
     <v-text-field
-      label="Search by song title, artist, album, or genre"
+      placeholder="Search by song title, artist, album, or genre"
       v-model="search"
     ></v-text-field>
   </panel>

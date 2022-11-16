@@ -9,6 +9,7 @@
         xs12: !isUserLoggedIn,
         xs6: isUserLoggedIn
       }" class="ml-2">
+      <!-- <img alt="random-movie-poster" src="https://api.lorem.space/image/movie?w=150&h=220" /> -->
       <songs-search-panel />
       <songs-panel class="mt-2" />
     </v-flex>

@@ -22,7 +22,7 @@ const config: PlaywrightTestConfig = {
     timeout: 5000
   },
   /* Run tests in files in parallel */
-  fullyParallel: true,
+  fullyParallel: false,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
   forbidOnly: !!process.env.CI,
   /* Retry on CI only */
@@ -36,7 +36,7 @@ const config: PlaywrightTestConfig = {
   ],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
-    headless: false,
+    headless: true,
     /* Maximum time each action such as `click()` can take. Defaults to 0 (no limit). */
     actionTimeout: 0,
     /* Base URL to use in actions like `await page.goto('/')`. */
@@ -46,12 +46,14 @@ const config: PlaywrightTestConfig = {
     },
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on',
+    video: 'retain-on-failure',
   },
 
   /* Configure projects for major browsers */
   projects: [
     {
       name: 'chromium',
+      fullyParallel: true,
       use: {
         ...devices['Desktop Chrome'],
       },
@@ -59,6 +61,7 @@ const config: PlaywrightTestConfig = {
 
     {
       name: 'firefox',
+      fullyParallel: true,
       use: {
         ...devices['Desktop Firefox'],
       },
@@ -66,6 +69,7 @@ const config: PlaywrightTestConfig = {
 
     {
       name: 'webkit',
+      fullyParallel: true,
       use: {
         ...devices['Desktop Safari'],
       },

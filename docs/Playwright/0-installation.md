@@ -17,10 +17,11 @@ Afterwards follow the instructions in the next section 'Checking out the project
 
 ## Checking out the project
 
-1. Clone the [project from GitHub](https://github.com/xebia/cypress-training)
+1. Fork the [project from GitHub](https://github.com/xebia/cypress-training) to your own Github account. You can do this by clicking on the link and when it opens in the upper right corner on the `Fork` button. In the next window specify a name and click on `Create fork`.
+2. Clone the forked repository.
 
 ``` bash
-git clone https://github.com/xebia/cypress-training.git
+git clone https://github.com/[your account]/[your repository name].git
 ```
 
 ## Installing Playwright

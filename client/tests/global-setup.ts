@@ -11,15 +11,15 @@ async function globalSetup(config: FullConfig) {
   const browser = await chromium.launch();
   const page = await browser.newPage();
 
-  await page.goto('http://localhost:8080/');
-  await page.getByRole('link', { name: 'Login' }).click();
-  await page.getByRole('textbox', { name: 'Email' }).click();
-  await page.getByRole('textbox', { name: 'Email' }).fill(username);
-  await page.getByRole('textbox', { name: 'Password' }).click();
-  await page.getByRole('textbox', { name: 'Password' }).fill(password);
-  await page.getByRole('button', { name: 'Login' }).click();
+  // await page.goto('http://localhost:8080/');
+  // await page.getByRole('link', { name: 'Login' }).click();
+  // await page.getByRole('textbox', { name: 'Email' }).click();
+  // await page.getByRole('textbox', { name: 'Email' }).fill(username);
+  // await page.getByRole('textbox', { name: 'Password' }).click();
+  // await page.getByRole('textbox', { name: 'Password' }).fill(password);
+  // await page.getByRole('button', { name: 'Login' }).click();
 
-  await page.context().storageState({ path: storageState as string });
+  // await page.context().storageState({ path: storageState as string });
   await browser.close();
 }
 

@@ -10,6 +10,7 @@ selenium-debug.log
 cypress/
 cypress.json
 .env
+tests/storage-state
 
 # Editor directories and files
 .idea

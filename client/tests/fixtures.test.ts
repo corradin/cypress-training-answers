@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { clean, createSong } from './fixtures';
+import { clean, createSong } from './functions';
 
 
 test.describe('Changing the songs', () => {

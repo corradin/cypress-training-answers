@@ -19,7 +19,7 @@ async function globalSetup(config: FullConfig) {
   // await page.getByRole('textbox', { name: 'Password' }).fill(password);
   // await page.getByRole('button', { name: 'Login' }).click();
 
-  // await page.context().storageState({ path: storageState as string });
+  await page.context().storageState({ path: storageState as string });
   await browser.close();
 }
 

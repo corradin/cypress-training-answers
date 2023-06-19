@@ -11,7 +11,8 @@ import { devices } from '@playwright/test';
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
-  globalSetup: './tests/global-setup',
+  /* This is the old way /*
+  // globalSetup: './tests/global-setup',
   testDir: './tests',
   /* Maximum time one test can run for. */
   timeout: 30 * 1000,
@@ -51,28 +52,39 @@ export default defineConfig({
   /* Configure projects for major browsers */
   projects: [
     {
+      name: 'setup',
+      testMatch: 'setup-and-teardown/setup.test.ts',
+      teardown: 'teardown',
+    },
+    {
+      name: 'teardown',
+      testMatch: 'setup-and-teardown/teardown.test.ts',
+    },
+    {
       name: 'chromium',
       fullyParallel: true,
+      testMatch: 'tests/fixtures.test.ts',
       use: {
         ...devices['Desktop Chrome'],
       },
+      dependencies: ['setup'],
     },
 
-    {
-      name: 'firefox',
-      fullyParallel: true,
-      use: {
-        ...devices['Desktop Firefox'],
-      },
-    },
+    // {
+    //   name: 'firefox',
+    //   fullyParallel: true,
+    //   use: {
+    //     ...devices['Desktop Firefox'],
+    //   },
+    // },
 
-    {
-      name: 'webkit',
-      fullyParallel: true,
-      use: {
-        ...devices['Desktop Safari'],
-      },
-    },
+    // {
+    //   name: 'webkit',
+    //   fullyParallel: true,
+    //   use: {
+    //     ...devices['Desktop Safari'],
+    //   },
+    // },
 
     /* Test against mobile viewports. */
     // {

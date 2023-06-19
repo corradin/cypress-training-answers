@@ -13,8 +13,8 @@ import { devices } from '@playwright/test';
 export default defineConfig({
   /* This is the old way /*
   // globalSetup: './tests/global-setup',
-  testDir: './tests',
   /* Maximum time one test can run for. */
+  testDir: './tests',
   timeout: 30 * 1000,
   expect: {
     /**
@@ -63,7 +63,7 @@ export default defineConfig({
     {
       name: 'chromium',
       fullyParallel: true,
-      testMatch: 'tests/*.test.ts',
+      testMatch: 'tests/*.{test,spec}.ts',
       use: {
         ...devices['Desktop Chrome'],
       },

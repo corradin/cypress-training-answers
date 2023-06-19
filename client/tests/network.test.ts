@@ -45,23 +45,24 @@ test('Return something', async ({ page }) => {
       artist: 'Me',
       genre: 'Random',
       album: 'Random album',
-      albumImageUrl: 'https://api.lorem.space/image/album?w=268',
+      albumImageUrl: 'https://picsum.photos/268/',
       youtubeId: '',
       lyrics: '',
       tab: '',
     },
   ];
 
-  page.route('**/songs', async route => {
+  await page.route('**/songs', async route => {
     // Fetch original response.
-    const response = await page.request.fetch(route.request());
-    
-    route.fulfill({
+    const response = await route.fetch();
+
+    await route.fulfill({
       // Pass all fields from the response.
       response,
-      body: JSON.stringify(testData),
+      contentType: 'application/json',
+      json: testData,
     });
   });
 
-  await page.goto('http://localhost:8080');
+  await page.goto('http://localhost:8080/');
 });

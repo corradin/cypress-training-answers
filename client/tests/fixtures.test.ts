@@ -42,7 +42,7 @@ test.describe('Changing the songs', () => {
 test('Search component start state assertions', async ({ page }) => {
   await page.goto('http://localhost:8080/');
 
-  const searchInput = await page.getByPlaceholder('Search by song title, artist, album, or genre');
+  const searchInput = await page.getByLabel('Search by song title, artist, album, or genre');
 
   await expect(searchInput).not.toBeFocused();
   await searchInput.click();

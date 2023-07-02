@@ -11,7 +11,7 @@ type Song = {
   lyrics: string;
   tab: string;
   createdAt: string;
-  updatedAt: string;
+  updatedAt?: string;
 };
 
 test('Retrieve the songs from the API', async ({ request }) => {
@@ -27,21 +27,10 @@ test('Retrieve the songs from the API', async ({ request }) => {
     lyrics: '',
     tab: '',
     createdAt: '2018-02-13T12:56:24.432Z',
-    updatedAt: '',
   };
 
   const response = await request.get('http://localhost:8081/songs');
   expect(response.ok()).toBeTruthy();
-  const responseArray: Song[] = await response.json();
-  const actualSong = responseArray.find(item => item.id === expectedSong.id);
-  expect(actualSong?.id).toBe(expectedSong.id);
-  expect(actualSong?.title).toBe(expectedSong.title);
-  expect(actualSong?.artist).toBe(expectedSong.artist);
-  expect(actualSong?.genre).toBe(expectedSong.genre);
-  expect(actualSong?.album).toBe(expectedSong.album);
-  expect(actualSong?.albumImageUrl).toBe(expectedSong.albumImageUrl);
-  expect(actualSong?.youtubeId).toBe(expectedSong.youtubeId);
-  expect(actualSong?.lyrics).toBe(expectedSong.lyrics);
-  expect(actualSong?.tab).toBe(expectedSong.tab);
-  expect(actualSong?.createdAt).toBe(expectedSong.createdAt);
+
+  expect(await response.json()).toContainEqual(expect.objectContaining(expectedSong));
 });

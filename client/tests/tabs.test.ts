@@ -15,6 +15,8 @@ test('Tabs', async ({ context }) => {
   await searchInput.click();
   await searchInput.type('test');
 
+  await page1.bringToFront();
+
   //TODO: https://playwright.dev/docs/next/pages#handling-new-pages
   await expect(searchInput).toBeFocused()
 });

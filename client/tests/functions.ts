@@ -1,6 +1,6 @@
 import { expect, Page } from '@playwright/test';
 
-export const createSong = async (page: Page) => {
+export const createSong = async (page: Page, title: string) => {
   await page.goto('http://localhost:8080/');
 
   await page.getByRole('link', { name: 'add' }).click();
@@ -8,7 +8,7 @@ export const createSong = async (page: Page) => {
 
   await page.getByLabel('Title').click();
 
-  await page.getByLabel('Title').fill('Sample Title');
+  await page.getByLabel('Title').fill(title);
 
   await page.getByLabel('Title').press('Tab');
 
@@ -41,7 +41,7 @@ export const createSong = async (page: Page) => {
   await page.getByRole('button', { name: 'Create Song' }).click();
   await expect(page).toHaveURL('http://localhost:8080/#/songs');
 
-  await page.getByText('Sample Title').click();
+  await page.getByText(title).click();
 };
 
 export const clean = async (page: Page) => {

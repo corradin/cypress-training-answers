@@ -8,3 +8,4 @@ client/node_modules/
 server/node_modules/
 *.iml
 .DS_Store
+client/tests/java/target/*

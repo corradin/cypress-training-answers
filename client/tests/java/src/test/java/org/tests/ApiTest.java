@@ -61,17 +61,20 @@ public class ApiTest {
     }
 
     @Test
-    void retrieveTheSongsFromTheAPI() throws JSONException { 
+    void retrieveTheSongsFromTheAPI() throws JSONException {
         APIResponse issues = request.get("/songs");
         Assert.assertTrue(issues.ok());
 
+        // Another option is to deserialise to a type safe data with a library like
+        // Jackson, then do normal asserts on the fields
         Map<String, Object> map = new HashMap<>();
         map.put("id", 1);
         map.put("title", "Nevermind");
         map.put("artist", "Nirvana");
         map.put("genre", "Alternative Rock");
         map.put("album", "Nevermind");
-        map.put("albumImageUrl", "https://is3-ssl.mzstatic.com/image/thumb/Features/d0/cc/62/dj.nanioukp.jpg/268x0w.jpg");
+        map.put("albumImageUrl",
+                "https://is3-ssl.mzstatic.com/image/thumb/Features/d0/cc/62/dj.nanioukp.jpg/268x0w.jpg");
         map.put("youtubeId", "m-ofL_3EZyE");
         map.put("lyrics", "");
         map.put("tab", "");

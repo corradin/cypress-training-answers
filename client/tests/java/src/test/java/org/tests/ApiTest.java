@@ -28,10 +28,13 @@ public class ApiTest {
     void createAPIRequestContext() {
         Map<String, String> headers = new HashMap<>();
 
-        request = playwright.request().newContext(new APIRequest.NewContextOptions()
-                // All requests we send go to this API endpoint.
-                .setBaseURL("http://localhost:8081")
-                .setExtraHTTPHeaders(headers));
+        request = playwright.request().newContext();
+
+        // Alternatively, set common parameters for the request context:
+        // request = playwright.request().newContext(new APIRequest.NewContextOptions()
+        // // All requests we send go to this API endpoint.
+        // .setBaseURL("http://localhost:8081")
+        // .setExtraHTTPHeaders(headers));
     }
 
     @BeforeSuite
@@ -62,7 +65,7 @@ public class ApiTest {
 
     @Test
     void retrieveTheSongsFromTheAPI() throws JSONException {
-        APIResponse issues = request.get("/songs");
+        APIResponse issues = request.get("http://localhost:8081/songs");
         Assert.assertTrue(issues.ok());
 
         // Another option is to deserialise to a type safe data with a library like

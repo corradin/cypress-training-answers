@@ -6,8 +6,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.testng.annotations.Test;
-import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.AfterSuite;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -26,18 +26,18 @@ public class ApiTest {
     }
 
     void createAPIRequestContext() {
-        Map<String, String> headers = new HashMap<>();
 
         request = playwright.request().newContext();
 
         // Alternatively, set common parameters for the request context:
+        // Map<String, String> headers = new HashMap<>();
         // request = playwright.request().newContext(new APIRequest.NewContextOptions()
         // // All requests we send go to this API endpoint.
         // .setBaseURL("http://localhost:8081")
         // .setExtraHTTPHeaders(headers));
     }
 
-    @BeforeSuite
+    @BeforeClass
     void beforeAll() {
         createPlaywright();
         createAPIRequestContext();
@@ -57,7 +57,7 @@ public class ApiTest {
         }
     }
 
-    @AfterSuite
+    @AfterClass
     void afterAll() {
         disposeAPIRequestContext();
         closePlaywright();

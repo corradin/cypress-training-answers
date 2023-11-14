@@ -15,6 +15,18 @@
       <artifactId>playwright</artifactId>
       <version>1.39.0</version>
     </dependency>
+    <dependency>
+      <groupId>org.testng</groupId>
+      <artifactId>testng</artifactId>
+      <version>7.5</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.skyscreamer</groupId>
+      <artifactId>jsonassert</artifactId>
+      <version>1.5.1</version>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
   <build>
     <plugins>

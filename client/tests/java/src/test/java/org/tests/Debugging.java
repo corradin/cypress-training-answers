@@ -3,10 +3,10 @@ package org.tests;
 import com.microsoft.playwright.*;
 import org.testng.annotations.*;
 
-public class ExampleTest {
+public class Debugging {
 
     @Test
-    public void exampleTest(){
+    void shouldNavigateToPlaywrightHomepage(){
         try (Playwright playwright = Playwright.create()) {
             Browser browser = playwright.chromium()
                     .launch(new BrowserType.LaunchOptions().setHeadless(false).setSlowMo(2000));
@@ -15,10 +15,5 @@ public class ExampleTest {
             page.pause();
             page.getByText("Getting Started").click();
         }
-    }
-
-    public static void main(String[] args) {
-        ExampleTest test = new ExampleTest();
-        test.exampleTest();
     }
 }

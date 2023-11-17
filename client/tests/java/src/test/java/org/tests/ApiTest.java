@@ -14,6 +14,7 @@ import org.json.JSONObject;
 import org.skyscreamer.jsonassert.JSONAssert;
 import org.skyscreamer.jsonassert.JSONCompareMode;
 import org.testng.Assert;
+import org.tests.utils.Constants;
 
 public class ApiTest {
 
@@ -64,9 +65,15 @@ public class ApiTest {
     }
 
     @Test
+    void shouldReturn200() {
+        APIResponse response = request.get(Constants.SERVER_URL + "/songs");
+         Assert.assertTrue(response.ok());
+    }
+
+    @Test
     void retrieveTheSongsFromTheAPI() throws JSONException {
-        APIResponse issues = request.get("http://localhost:8081/songs");
-        Assert.assertTrue(issues.ok());
+        APIResponse response = request.get(Constants.SERVER_URL + "/songs");
+        Assert.assertTrue(response.ok());
 
         // Another option is to deserialise to a type safe data with a library like
         // Jackson, then do normal asserts on the fields
@@ -85,9 +92,9 @@ public class ApiTest {
 
         JSONObject expected = new JSONObject(map);
 
-        JSONArray actual = new JSONArray(issues.text());
+        JSONArray actual = new JSONArray(response.text());
 
-        JSONAssert.assertEquals(expected, actual.getJSONObject(0), JSONCompareMode.LENIENT);
+        JSONAssert.assertEquals(expected, actual.getJSONObject(0), JSONCompareMode.STRICT_ORDER);
     }
 
 }

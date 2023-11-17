@@ -5,7 +5,6 @@ import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertTha
 
 import java.nio.file.Paths;
 import org.testng.annotations.Test;
-// import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
 public class TracingTest {
 

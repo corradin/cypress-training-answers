@@ -1,7 +1,7 @@
 package org.tests;
 
 import com.microsoft.playwright.*;
-import com.microsoft.playwright.assertions.PlaywrightAssertions;
+import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
 import java.nio.file.Paths;
 import org.testng.annotations.Test;
@@ -25,7 +25,7 @@ public class TracingTest {
             page.navigate("http://playwright.dev");
             page.getByText("Getting Started").click();
 
-            PlaywrightAssertions.assertThat(page).hasURL("https://playwright.dev/docs/intro");
+            assertThat(page).hasURL("https://playwright.dev/docs/intro");
 
             // Stop tracing and export it into a zip archive.
             context.tracing().stop(new Tracing.StopOptions()

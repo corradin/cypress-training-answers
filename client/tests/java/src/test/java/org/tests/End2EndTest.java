@@ -5,14 +5,14 @@ import com.microsoft.playwright.options.*;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
-import org.testng.annotations.AfterTest;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 import org.tests.utils.Constants;
 
 public class End2EndTest {
 
     // Ensures the database is always left empty between tests, even when a test fails.
-    @AfterTest(alwaysRun = true)
+    @AfterMethod(alwaysRun = true)
     void cleanDatabase() {
          try (Playwright playwright = Playwright.create()) {
             Browser browser = playwright.chromium().launch(new BrowserType.LaunchOptions()

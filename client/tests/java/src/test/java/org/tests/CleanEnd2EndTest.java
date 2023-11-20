@@ -1,7 +1,6 @@
 package org.tests;
 
 import com.microsoft.playwright.*;
-import com.microsoft.playwright.options.*;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
@@ -73,11 +72,6 @@ public class CleanEnd2EndTest {
 
     @Test
     public void searchTest() {
-        try (Playwright playwright = Playwright.create()) {
-            Browser browser = playwright.chromium().launch(new BrowserType.LaunchOptions()
-                    .setHeadless(false));
-            BrowserContext context = browser.newContext();
-            Page page = context.newPage();
             page.navigate(Constants.CLIENT_URL);
 
             Locator searchInput = page.getByPlaceholder("Search by song title, artist, album, or genre");
@@ -85,6 +79,5 @@ public class CleanEnd2EndTest {
             assertThat(searchInput).not().isFocused();
             searchInput.click();
             assertThat(searchInput).isFocused();
-        }
     }
 }

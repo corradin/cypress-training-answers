@@ -21,3 +21,4 @@ tests/storage-state
 /test-results/
 /playwright-report/
 /playwright/.cache/
+/tests/java/.auth/

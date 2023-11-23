@@ -16,11 +16,11 @@ jobs:
           with:
             distribution: 'temurin'
             java-version: '17'
-        - run: echo hello > path/to/artifact/world.txt
+        - run: echo hello > world.txt
         - uses: actions/upload-artifact@v3
           with:
             name: my-artifact
-            path: path/to/artifact/world.txt
+            path: world.txt
         # - name: Install browsers
         #   working-directory: client/tests/java
         #   run: mvn exec:java -e -D exec.mainClass=com.microsoft.playwright.CLI -D exec.args="install --with-deps"

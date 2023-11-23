@@ -16,6 +16,8 @@ jobs:
           with:
             distribution: 'temurin'
             java-version: '17'
+        - name: Go to directory
+          run: cd client/tests/java
         - name: Install browsers
           run: mvn exec:java -e -D exec.mainClass=com.microsoft.playwright.CLI -D exec.args="install --with-deps"
         - name: Run Playwright

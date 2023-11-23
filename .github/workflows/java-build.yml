@@ -16,14 +16,13 @@ jobs:
           with:
             distribution: 'temurin'
             java-version: '17'
-        - run: echo hello > world.txt
+        - name: Install browsers
+          working-directory: client/tests/java
+          run: mvn exec:java -e -D exec.mainClass=com.microsoft.playwright.CLI -D exec.args="install --with-deps"
+        - name: Run Playwright
+          working-directory: client/tests/java
+          run: mvn test
         - uses: actions/upload-artifact@v3
           with:
-            name: my-artifact
-            path: world.txt
-        # - name: Install browsers
-        #   working-directory: client/tests/java
-        #   run: mvn exec:java -e -D exec.mainClass=com.microsoft.playwright.CLI -D exec.args="install --with-deps"
-        # - name: Run Playwright
-        #   working-directory: client/tests/java
-        #   run: mvn test
+            name: playwright-trace
+            path: trace.zip

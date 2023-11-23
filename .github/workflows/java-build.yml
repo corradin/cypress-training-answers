@@ -21,4 +21,4 @@ jobs:
           run: mvn exec:java -e -D exec.mainClass=com.microsoft.playwright.CLI -D exec.args="install --with-deps"
         - name: Run Playwright
           working-directory: client/tests/java
-          run: mvn test -Dtest=YourFirstTest
+          run: mvn test

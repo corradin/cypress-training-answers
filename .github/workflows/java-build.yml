@@ -24,4 +24,4 @@ jobs:
         - uses: actions/upload-artifact@v3
           with:
             name: playwright-trace
-            path: trace.zip
+            path: client/tests/java/trace.zip

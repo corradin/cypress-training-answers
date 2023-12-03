@@ -5,7 +5,6 @@ if (!process.env.NODE_ENV) {
   process.env.NODE_ENV = JSON.parse(config.dev.env.NODE_ENV)
 }
 
-const spawn = require('child_process').spawn;
 var path = require('path')
 var express = require('express')
 var webpack = require('webpack')
@@ -84,8 +83,11 @@ devMiddleware.waitUntilValid(() => {
   console.log('> Listening at ' + uri + '\n')
   // when env is testing, don't need open it
   if (autoOpenBrowser && process.env.NODE_ENV !== 'testing') {
-    // opn(uri)
-    spawn('open', [uri]);
+    (async () => {
+      const { default: open } = await import('open');
+      // Opens the image in the default image viewer and waits for the opened app to quit.
+      await open(uri);
+  })();
   }
   _resolve()
 })

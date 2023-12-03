@@ -10,3 +10,5 @@ server/node_modules/
 .DS_Store
 client/tests/java/target/*
 client/tests/java/trace.zip
+client/tests/javaGettingStarted/target/*
+client/tests/javaGettingStarted/trace.zip

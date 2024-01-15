@@ -4,39 +4,20 @@ on: push
 
 
 jobs:
-  build:
+  run_tests:
+    name: Run my Playwright tests
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [18.14.2]
-    
     steps:
-      - uses: actions/checkout@v3
-        with:
-          # Disabling shallow clone is recommended for improving relevancy of SonarCloud reporting
-          fetch-depth: 0
-
-      - name: Use Node.js ${{ matrix.node-version }}
+      - name: Get the code
+        uses: actions/checkout@v3
+      - name: Install Node.js
         uses: actions/setup-node@v3
         with:
-          always-auth: true
-          node-version: ${{ matrix.node-version }}
-          registry-url: https://registry.npmjs.org
-  # run_tests:
-  #   name: Run my Playwright tests
-  #   runs-on: ubuntu-latest
-
-  #   steps:
-  #     - name: Get the code
-  #       uses: actions/checkout@v3
-  #     - name: Install Node.js
-  #       uses: actions/setup-node@v3
-  #       with:
-  #         node-version: '18'
-  #     - name: Install dependencies
-  #       run: cd client && npm ci && cd ../server && npm ci && cd ..
-  #     - name: Install browsers
-  #       run: cd client && npx playwright install --with-deps && cd ..
-  #     - name: Run Playwright
-  #       run: cd client && npx playwright test example
+          node-version: '18'
+      - name: Install dependencies
+        run: cd client && npm ci && cd ../server && npm ci && cd ..
+      - name: Install browsers
+        run: cd client && npx playwright install --with-deps && cd ..
+      - name: Run Playwright
+        run: cd client && npx playwright test example

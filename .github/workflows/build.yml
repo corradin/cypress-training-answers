@@ -15,11 +15,11 @@ jobs:
           # Disabling shallow clone is recommended for improving relevancy of SonarCloud reporting
           fetch-depth: 0
 
-      - name: Use Node.js $NODE_VERSION
+      - name: Use Node.js ${{env.NODE_VERSION}}
         uses: actions/setup-node@v3
         with:
           always-auth: true
-          node-version: $NODE_VERSION
+          node-version: ${{env.NODE_VERSION}}
           registry-url: https://registry.npmjs.org
   # run_tests:
   #   name: Run my Playwright tests

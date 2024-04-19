@@ -49,20 +49,6 @@
           v-model="song.youtubeId"
           id="sngYoutube"
         ></v-text-field>
-        <v-btn
-          dark
-          class="cyan"
-          id="sngBtn"
-          @click="onPickFile">
-          Upload lyrics
-        </v-btn>
-        <input
-          type="file"
-          style="display: none"
-          ref="fileInput"
-          accept=".txt"
-          @change="onFilePicked"
-      />
       </panel>
     </v-flex>
 
@@ -85,6 +71,20 @@
           v-model="song.lyrics"
           id="sngLyrics"
         ></v-text-field>
+        <v-btn
+          dark
+          class="cyan"
+          id="sngBtn"
+          @click="onPickFile">
+          Upload lyrics
+        </v-btn>
+        <input
+          type="file"
+          style="display: none"
+          ref="fileInput"
+          accept=".txt"
+          @change="onFilePicked"
+      />
       </panel>
 
       <div class="danger-alert" v-if="error">

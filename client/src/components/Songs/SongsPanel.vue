@@ -2,9 +2,7 @@
   <panel title="Songs">
     <v-btn
       slot="action"
-      :to="{
-        name: 'songs-create'
-      }"
+      :to="{ name: 'songs-create' }"
       class="cyan accent-2"
       light
       medium
@@ -23,25 +21,32 @@
       <v-layout>
         <v-flex xs6>
           <div class="song-title">
-            {{song.title}}
+            {{ song.title }}
           </div>
           <div class="song-artist">
-            {{song.artist}}
+            {{ song.artist }}
           </div>
           <div class="song-genre">
-            {{song.genre}}
+            {{ song.genre }}
           </div>
 
           <v-btn
             dark
             class="cyan"
-            :to="{
-              name: 'song', 
-              params: {
-                songId: song.id
-              }
-            }">
+            @click="viewSong(song.id, false)">
             View
+          </v-btn>
+          <v-btn
+            dark
+            class="cyan"
+            @click="viewSong(song.id, true)">
+            View in new tab
+          </v-btn>
+          <v-btn
+            dark
+            class="cyan"
+            @click="viewSong(song.id, false, true)">
+            View in new window
           </v-btn>
         </v-flex>
 
@@ -57,7 +62,7 @@
 import SongsService from '@/services/SongsService'
 
 export default {
-  data () {
+  data() {
     return {
       songs: null
     }
@@ -65,8 +70,24 @@ export default {
   watch: {
     '$route.query.search': {
       immediate: true,
-      async handler (value) {
+      async handler(value) {
         this.songs = (await SongsService.index(value)).data
+      }
+    }
+  },
+  methods: {
+    viewSong(songId, newTab, newWindow) {
+      const route = { name: 'song', params: { songId } };
+      const resolvedRoute = this.$router.resolve(route).href;
+
+      if (newTab) {
+        window.open(resolvedRoute, '_blank');
+      }
+      if (newWindow) 
+      {
+        window.open(resolvedRoute, '_blank', 'menubar=no,toolbar=no,location=no,status=no');
+      } else {
+        this.$router.push(route);
       }
     }
   }

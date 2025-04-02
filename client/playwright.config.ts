@@ -63,7 +63,7 @@ export default defineConfig({
     {
       name: 'chromium',
       fullyParallel: true,
-      testMatch: 'tests/*.{test,spec}.ts',
+      testMatch: '*.{test,spec}.ts',
       use: {
         ...devices['Desktop Chrome'],
       },

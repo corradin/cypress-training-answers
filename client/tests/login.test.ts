@@ -1,7 +1,8 @@
 import { test, expect } from '@playwright/test';
 import dotenv from 'dotenv';
+import path from 'path';
 
-dotenv.config();
+dotenv.config({ path: path.resolve(__dirname, '..', '.env') });
 
 const username = process.env.TEST_USERNAME ?? '';
 const password = process.env.TEST_PASSWORD ?? '';
